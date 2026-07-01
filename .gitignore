@@ -17,8 +17,11 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+.github
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+pnpm-lock.yaml
