@@ -5,7 +5,7 @@ import { GuestRoute, ProtectedRoute } from "./routes/guards";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
-import ProfilePage from "./pages/profile/ProfilePage";
+import ProfilePage from "@/pages/profile/ProfilePage";
 
 // 应用根组件。
 // 1. 应用启动时调用 bootstrap，尝试用本地 token 恢复登录态；
