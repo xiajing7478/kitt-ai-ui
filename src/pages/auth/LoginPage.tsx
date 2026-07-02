@@ -1,9 +1,9 @@
-import { Button, Form, Input, NavBar } from 'antd-mobile';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useAuthStore } from '../../store/auth';
-import { showError, showSuccess } from '../../utils/toast';
-import './auth.css';
+import { Button, Form, Input, NavBar } from "antd-mobile";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuthStore } from "../../store/auth";
+import { showError, showSuccess } from "../../utils/toast";
+import "./auth.css";
 
 type LoginFormValues = {
   account: string;
@@ -20,16 +20,17 @@ export default function LoginPage() {
   const location = useLocation();
 
   // 未登录时被 ProtectedRoute 拦截跳回来的用户，登录后可以回跳到原页面。
-  const redirectTo = (location.state as { from?: string } | null)?.from ?? '/profile';
+  const redirectTo =
+    (location.state as { from?: string } | null)?.from ?? "/profile";
 
   async function handleSubmit(values: LoginFormValues) {
     setSubmitting(true);
     try {
       await login(values);
-      showSuccess('登录成功');
+      showSuccess("登录成功");
       navigate(redirectTo, { replace: true });
     } catch (error) {
-      showError(error, '登录失败');
+      showError(error, "登录失败");
     } finally {
       setSubmitting(false);
     }
@@ -49,9 +50,16 @@ export default function LoginPage() {
         layout="vertical"
         className="auth-page__form"
         onFinish={handleSubmit}
+        initialValues={{ account: "admin", password: "andy7478" }}
         footer={
           <div className="auth-page__actions">
-            <Button block color="primary" size="large" type="submit" loading={submitting}>
+            <Button
+              block
+              color="primary"
+              size="large"
+              type="submit"
+              loading={submitting}
+            >
               登录
             </Button>
 
@@ -69,7 +77,7 @@ export default function LoginPage() {
         <Form.Item
           name="account"
           label="账号"
-          rules={[{ required: true, message: '请输入用户名或邮箱' }]}
+          rules={[{ required: true, message: "请输入用户名或邮箱" }]}
         >
           <Input placeholder="用户名或邮箱" clearable />
         </Form.Item>
@@ -77,7 +85,7 @@ export default function LoginPage() {
         <Form.Item
           name="password"
           label="密码"
-          rules={[{ required: true, message: '请输入密码' }]}
+          rules={[{ required: true, message: "请输入密码" }]}
         >
           <Input type="password" placeholder="密码" clearable />
         </Form.Item>
