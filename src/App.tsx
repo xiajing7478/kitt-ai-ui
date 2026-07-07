@@ -6,6 +6,8 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 import ProfilePage from "@/pages/profile/ProfilePage";
+import ChatPage from "@/pages/chat/ChatPage";
+import "./styles/global.less";
 
 // 应用根组件。
 // 1. 应用启动时调用 bootstrap，尝试用本地 token 恢复登录态；
@@ -21,8 +23,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 根路径默认跳转到个人中心，由 ProtectedRoute 决定是否需要先登录。 */}
-        <Route path="/" element={<Navigate to="/profile" replace />} />
+        {/* 根路径默认跳转到聊天页面，由 ProtectedRoute 决定是否需要先登录。 */}
+        <Route path="/" element={<Navigate to="/chat" replace />} />
 
         <Route
           path="/login"
@@ -46,6 +48,15 @@ function App() {
             <GuestRoute>
               <ForgotPasswordPage />
             </GuestRoute>
+          }
+        />
+
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <ChatPage />
+            </ProtectedRoute>
           }
         />
 

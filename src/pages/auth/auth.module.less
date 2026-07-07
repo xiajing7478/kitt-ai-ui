@@ -1,0 +1,50 @@
+@import "@/styles/global.less";
+
+.auth-page {
+  min-height: 100vh;
+  background-color: @background-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-page__header {
+  padding: @spacing-xl @spacing-base;
+  text-align: center;
+}
+
+.auth-page__title {
+  margin: 0;
+  font-size: @font-size-xl;
+  color: @text-color;
+}
+
+.auth-page__subtitle {
+  margin-top: @spacing-sm;
+  font-size: @font-size-sm;
+  color: @text-secondary-color;
+}
+
+.auth-page__form {
+  flex: 1;
+  padding: 0 @spacing-base @spacing-xl;
+}
+
+.auth-page__actions {
+  margin-top: @spacing-xl;
+}
+
+.auth-page__links {
+  margin-top: @spacing-lg;
+  display: flex;
+  justify-content: space-between;
+  gap: @spacing-base;
+  font-size: @font-size-sm;
+}
+
+.auth-page__link {
+  color: @primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

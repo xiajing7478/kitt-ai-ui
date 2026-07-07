@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuthStore } from "../../store/auth";
 import { showError, showSuccess } from "../../utils/toast";
-import "./auth.css";
+import styles from "./auth.module.less";
 
 type LoginFormValues = {
   account: string;
@@ -37,22 +37,24 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="auth-page">
+    <div className={styles["auth-page"]}>
       <NavBar backArrow={false}>登录</NavBar>
 
-      <div className="auth-page__header">
-        <h1 className="auth-page__title">欢迎回到 KITT AI</h1>
-        <p className="auth-page__subtitle">使用你的用户名或邮箱登录</p>
+      <div className={styles["auth-page__header"]}>
+        <h1 className={styles["auth-page__title"]}>欢迎回到 KITT AI</h1>
+        <p className={styles["auth-page__subtitle"]}>
+          使用你的用户名或邮箱登录
+        </p>
       </div>
 
       <Form
         form={form}
         layout="vertical"
-        className="auth-page__form"
+        className={styles["auth-page__form"]}
         onFinish={handleSubmit}
         initialValues={{ account: "admin", password: "andy7478" }}
         footer={
-          <div className="auth-page__actions">
+          <div className={styles["auth-page__actions"]}>
             <Button
               block
               color="primary"
@@ -63,11 +65,11 @@ export default function LoginPage() {
               登录
             </Button>
 
-            <div className="auth-page__links">
-              <Link to="/register" className="auth-page__link">
+            <div className={styles["auth-page__links"]}>
+              <Link to="/register" className={styles["auth-page__link"]}>
                 没有账号？去注册
               </Link>
-              <Link to="/forgot-password" className="auth-page__link">
+              <Link to="/forgot-password" className={styles["auth-page__link"]}>
                 忘记密码？
               </Link>
             </div>

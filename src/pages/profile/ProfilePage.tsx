@@ -5,7 +5,7 @@ import { useAuthStore } from "../../store/auth";
 import { showError, showSuccess } from "../../utils/toast";
 import UpdateProfileForm from "./UpdateProfileForm";
 import UpdatePasswordForm from "./UpdatePasswordForm";
-import "../auth/auth.css";
+import styles from "./profile.module.less";
 
 // 个人中心页面。
 // 展示当前登录用户资料，并提供“修改资料”“修改密码”“退出登录”入口。
@@ -29,26 +29,26 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="profile-page">
+    <div className={styles["profile-page"]}>
       <NavBar backArrow={false}>个人中心</NavBar>
 
-      <div className="profile-page__header">
-        <h1 className="profile-page__title">
+      <div className={styles["profile-page__header"]}>
+        <h1 className={styles["profile-page__title"]}>
           你好，{user?.username ?? "访客"}
         </h1>
       </div>
 
-      <div className="profile-page__section">
-        <p className="profile-page__section-title">账号资料</p>
-        <div className="profile-page__field">
+      <div className={styles["profile-page__section"]}>
+        <p className={styles["profile-page__section-title"]}>账号资料</p>
+        <div className={styles["profile-page__field"]}>
           <span>用户名</span>
           <span>{user?.username ?? "-"}</span>
         </div>
-        <div className="profile-page__field">
+        <div className={styles["profile-page__field"]}>
           <span>邮箱</span>
           <span>{user?.email ?? "-"}</span>
         </div>
-        <div className="profile-page__field">
+        <div className={styles["profile-page__field"]}>
           <span>账号状态</span>
           <span>{user?.is_active ? "正常" : "已禁用"}</span>
         </div>
@@ -63,7 +63,7 @@ export default function ProfilePage() {
         </List.Item>
       </List>
 
-      <div className="profile-page__actions">
+      <div className={styles["profile-page__actions"]}>
         <Button block color="danger" fill="outline" onClick={handleLogout}>
           退出登录
         </Button>

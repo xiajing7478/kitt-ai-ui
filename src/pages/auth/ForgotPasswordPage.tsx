@@ -1,9 +1,9 @@
-import { Button, Form, Input, NavBar } from 'antd-mobile';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { forgotPasswordApi } from '../../api/auth';
-import { showError, showSuccess } from '../../utils/toast';
-import './auth.css';
+import { Button, Form, Input, NavBar } from "antd-mobile";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { forgotPasswordApi } from "../../api/auth";
+import { showError, showSuccess } from "../../utils/toast";
+import styles from "./auth.module.less";
 
 type ForgotPasswordFormValues = {
   username: string;
@@ -23,7 +23,7 @@ export default function ForgotPasswordPage() {
 
   async function handleSubmit(values: ForgotPasswordFormValues) {
     if (values.newPassword !== values.confirmPassword) {
-      showError(new Error('两次输入的新密码不一致'));
+      showError(new Error("两次输入的新密码不一致"));
       return;
     }
 
@@ -34,22 +34,22 @@ export default function ForgotPasswordPage() {
         email: values.email,
         newPassword: values.newPassword,
       });
-      showSuccess('密码重置成功，请重新登录');
-      navigate('/login', { replace: true });
+      showSuccess("密码重置成功，请重新登录");
+      navigate("/login", { replace: true });
     } catch (error) {
-      showError(error, '密码重置失败');
+      showError(error, "密码重置失败");
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <div className="auth-page">
+    <div className={styles["auth-page"]}>
       <NavBar onBack={() => navigate(-1)}>找回密码</NavBar>
 
-      <div className="auth-page__header">
-        <h1 className="auth-page__title">重置账号密码</h1>
-        <p className="auth-page__subtitle">
+      <div className={styles["auth-page__header"]}>
+        <h1 className={styles["auth-page__title"]}>重置账号密码</h1>
+        <p className={styles["auth-page__subtitle"]}>
           请输入注册时使用的用户名和邮箱，两者匹配后即可设置新密码
         </p>
       </div>
@@ -57,19 +57,25 @@ export default function ForgotPasswordPage() {
       <Form
         form={form}
         layout="vertical"
-        className="auth-page__form"
+        className={styles["auth-page__form"]}
         onFinish={handleSubmit}
         footer={
-          <div className="auth-page__actions">
-            <Button block color="primary" size="large" type="submit" loading={submitting}>
+          <div className={styles["auth-page__actions"]}>
+            <Button
+              block
+              color="primary"
+              size="large"
+              type="submit"
+              loading={submitting}
+            >
               重置密码
             </Button>
 
-            <div className="auth-page__links">
-              <Link to="/login" className="auth-page__link">
+            <div className={styles["auth-page__links"]}>
+              <Link to="/login" className={styles["auth-page__link"]}>
                 返回登录
               </Link>
-              <Link to="/register" className="auth-page__link">
+              <Link to="/register" className={styles["auth-page__link"]}>
                 去注册新账号
               </Link>
             </div>
@@ -79,7 +85,7 @@ export default function ForgotPasswordPage() {
         <Form.Item
           name="username"
           label="用户名"
-          rules={[{ required: true, message: '请输入用户名' }]}
+          rules={[{ required: true, message: "请输入用户名" }]}
         >
           <Input placeholder="注册时使用的用户名" clearable />
         </Form.Item>
@@ -88,8 +94,12 @@ export default function ForgotPasswordPage() {
           name="email"
           label="邮箱"
           rules={[
-            { required: true, message: '请输入邮箱' },
-            { type: 'string', pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '邮箱格式不正确' },
+            { required: true, message: "请输入邮箱" },
+            {
+              type: "string",
+              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "邮箱格式不正确",
+            },
           ]}
         >
           <Input placeholder="注册时使用的邮箱" clearable />
@@ -99,20 +109,24 @@ export default function ForgotPasswordPage() {
           name="newPassword"
           label="新密码"
           rules={[
-            { required: true, message: '请输入新密码' },
+            { required: true, message: "请输入新密码" },
             {
               pattern: /^(?=.*[A-Za-z])(?=.*\d).{8,}$/,
-              message: '密码至少 8 位，且需包含字母和数字',
+              message: "密码至少 8 位，且需包含字母和数字",
             },
           ]}
         >
-          <Input type="password" placeholder="至少 8 位，字母 + 数字" clearable />
+          <Input
+            type="password"
+            placeholder="至少 8 位，字母 + 数字"
+            clearable
+          />
         </Form.Item>
 
         <Form.Item
           name="confirmPassword"
           label="确认新密码"
-          rules={[{ required: true, message: '请再次输入新密码' }]}
+          rules={[{ required: true, message: "请再次输入新密码" }]}
         >
           <Input type="password" placeholder="再次输入新密码" clearable />
         </Form.Item>

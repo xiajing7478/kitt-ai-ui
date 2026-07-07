@@ -1,0 +1,43 @@
+@import '@/styles/global.less';
+
+.profile-page {
+  min-height: 100vh;
+  background-color: @background-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-page__header {
+  padding: @spacing-xl @spacing-base;
+  text-align: center;
+}
+
+.profile-page__title {
+  margin: 0;
+  font-size: @font-size-xl;
+  color: @text-color;
+}
+
+.profile-page__section {
+  background-color: @white-color;
+  padding: @spacing-lg @spacing-base;
+  margin-bottom: @spacing-sm;
+}
+
+.profile-page__section-title {
+  margin: 0 0 @spacing-sm;
+  font-size: @font-size-sm;
+  color: @text-secondary-color;
+  text-transform: uppercase;
+}
+
+.profile-page__field {
+  display: flex;
+  justify-content: space-between;
+  padding: @spacing-sm 0;
+  font-size: @font-size-base;
+}
+
+.profile-page__actions {
+  padding: @spacing-lg @spacing-base;
+}
